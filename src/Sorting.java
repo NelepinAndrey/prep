@@ -27,10 +27,17 @@ public class Sorting {
 
     private void selection(int[] array) {
         for (int i = 0; i < array.length; i++) {
+            int min = i;
             for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[i])
-                    swap(array, i, j);
+                if (array[j] < array[min])
+                    swap2(array, j, min);
             }
         }
+    }
+    private void swap2(int[] array, int j, int min) {
+        int temp;
+        temp = array[j];
+        array[j] = array[min];
+        array[min] = temp;
     }
 }
