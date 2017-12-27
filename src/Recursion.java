@@ -1,7 +1,7 @@
 public class Recursion {
     public static void main(String[] args) {
         Recursion recursion = new Recursion();
-        System.out.println(recursion.factorial(5));
+        System.out.println(recursion.factorial(-1));
         System.out.println(recursion.fib(48));
     }
 
@@ -14,10 +14,10 @@ public class Recursion {
 
     private int factorial(int n) {
         if (n == 0) {
-            return 0;
-        }
-        if (n == 1) {
             return 1;
+        }
+        if (n < 0) {
+            throw new IllegalArgumentException("n must be >= 0");
         }
         return n * (factorial(n - 1));
     }
