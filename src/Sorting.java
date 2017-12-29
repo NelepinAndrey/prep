@@ -1,14 +1,16 @@
 public class Sorting {
     public static void main(String[] args) {
         Sorting sorting = new Sorting();
-        int array[] = {10, 14, 5, 6, 7, 2, 16, 77, 35, 1};
+        int array[] = {10, 14, 5, 6, 7, 2, 16, 77, 35, 1, 7};
         sorting.bubbleSort(array);
         sorting.selectionSort(array);
         sorting.mergeSort(array, 0, array.length - 1);
+        sorting.insertion(array);
         for (int anArray : array) {
             System.out.println(anArray);
         }
     }
+
 
     private void bubbleSort(int[] array) {
         for (int i = 0; i < array.length; i++) {
@@ -83,5 +85,15 @@ public class Sorting {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+    }
+
+    private void insertion(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            int j = i;
+            while (j > 0 && array[j - 1] > array[j]) {
+                swap(array, j - 1, j);
+                j--;
+            }
+        }
     }
 }
