@@ -1,6 +1,7 @@
 public class Recursion {
     public static void main(String[] args) {
         Recursion recursion = new Recursion();
+        recursion.move(3, 'A', 'C', 'B');
         System.out.println(recursion.factorial(-1));
         System.out.println(recursion.fib(48));
     }
@@ -20,5 +21,16 @@ public class Recursion {
             throw new IllegalArgumentException("n must be >= 0");
         }
         return n * (factorial(n - 1));
+    }
+
+    private void move(int n, char source, char target, char aux) {
+        if (n == 1) {
+            System.out.println("" + 1 + "" + source + " -> " + target);
+            return;
+        }
+
+        move(n - 1, source, aux, target);
+        System.out.println("" + (n) + "" + source + " -> " + target);
+        move(n - 1, aux, target, source);
     }
 }
