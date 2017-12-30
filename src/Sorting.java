@@ -2,10 +2,12 @@ public class Sorting {
     public static void main(String[] args) {
         Sorting sorting = new Sorting();
         int array[] = {10, 14, 5, 6, 7, 2, 16, 77, 35, 1, 7};
+        int array1[] = {1, 2, 5, 6, 7, 12, 16, 23, 35, 54, 66};
         sorting.bubbleSort(array);
         sorting.selectionSort(array);
         sorting.mergeSort(array, 0, array.length - 1);
         sorting.insertion(array);
+        System.out.println(sorting.binarySearch(array1, 23, 0, array1.length - 1));
         for (int anArray : array) {
             System.out.println(anArray);
         }
@@ -96,4 +98,18 @@ public class Sorting {
             }
         }
     }
+
+    private int binarySearch(int[] array, int key, int left, int right) {
+        int mid = (left + right) / 2;
+        if (array[mid] == key) {
+            return mid;
+        }
+        if (array[mid] > key) {
+            return binarySearch(array, key, left, mid);
+        } else {
+            return binarySearch(array, key, mid + 1, right);
+        }
+    }
 }
+
+
