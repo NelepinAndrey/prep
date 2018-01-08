@@ -1,13 +1,12 @@
 public class Sorting {
     public static void main(String[] args) {
         Sorting sorting = new Sorting();
-        int array[] = {10, 14, 5, 6, 7, 2, 16, 77, 35, 1, 7};
-        int array1[] = {1, 2, 5, 6, 7, 12, 16, 23, 35, 54, 66};
+        int array[] = {1, 4, 23, 10, 13, 9, 15, 20, 25, 2, 20, 19, 30};
         sorting.bubbleSort(array);
         sorting.selectionSort(array);
         sorting.mergeSort(array, 0, array.length - 1);
         sorting.insertion(array);
-        System.out.println(sorting.binarySearch(array1, 23, 0, array1.length - 1));
+        sorting.quickSort(array, 0, array.length - 1);
         for (int anArray : array) {
             System.out.println(anArray);
         }
@@ -99,17 +98,31 @@ public class Sorting {
         }
     }
 
-    private int binarySearch(int[] array, int key, int left, int right) {
-        int mid = (left + right) / 2;
-        if (array[mid] == key) {
-            return mid;
+
+    private void quick(int[] array, int mid, int left, int right) {
+        while (left < right) {
+            while (array[left] < array[mid])
+                left++;
+            while (array[right] > array[mid])
+                right--;
+            if (array[left] > array[right]) {
+                swap(array, left, right);
+            }
         }
-        if (array[mid] > key) {
-            return binarySearch(array, key, left, mid);
-        } else {
-            return binarySearch(array, key, mid + 1, right);
+    }
+
+    private void quickSort(int[] array, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            quick(array, mid, left, right);
+            if (left < mid)
+                quickSort(array, left, mid);
+            if (mid < right)
+                quickSort(array, mid + 1, right);
         }
     }
 }
+
+
 
 
